@@ -1,20 +1,121 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil - E-Portfolio{% endblock %}
 
 {% block body %}
+<section class="home-section">
+    <h1 class="fade-in">Bienvenue sur mon E-portfolio</h1>
+    
+    <div class="presentation-container">
+        <div class="presentation-left slide-left">
+            <div class="avatar-container">
+                <img src="image/2.jpg" class="avatar">
+            </div>
+        </div>
+
+        <div class="presentation-right slide-right">
+            <div class="info-card card">
+                <h2>Nait Sidi Moh Ayman</h2>
+                <p class="subtitle">Groupe B2 – Étudiant BUT Réseaux et Télécommunications</p>
+                <p class="email">📧 naitsidimohayman@gmail.com</p>
+                
+                <div class="description">
+                    <p>
+                        Passionné par les réseaux et les télécommunications, 
+                        je développe mes compétences en administration système, 
+                        sécurité informatique et programmation.
+                    </p>
+                </div>
+                
+                <div class="btn-container">
+                    <a href="{{ path('app_competence') }}" class="btn btn-arrow">
+                        <p><span style="border: 1px solid red;">Pour en savoir plus sur moi</span></span></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .home-section {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .presentation-container {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 50px;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .avatar-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        border: 5px solid var(--bordeau);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+    }
+
+    .avatar-container:hover {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    .avatar {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .info-card {
+        padding: 40px;
+    }
+
+    .info-card h2 {
+        color: var(--blanc-casse);
+        margin-bottom: 15px;
+        text-align: left;
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        color: #a0a0a0;
+        margin-bottom: 10px;
+    }
+
+    .email {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        color: var;
+        font-weight: 600;
+    }
+
+    .description {
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .btn-container {
+        text-align: left;
+    }
+
+    @media (max-width: 768px) {
+        .presentation-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .btn-container {
+            text-align: center;
+        }
+    }
 </style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/naits/e-portfolio/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/naits/e-portfolio/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
 {% endblock %}
