@@ -1,20 +1,269 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CvController!{% endblock %}
+{% block title %}CV - Ayman Nait Sidi Moh
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.cv-container {
+			max-width: 1000px;
+			margin: 0 auto;
+			background-color: white;
+			color: #333;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			padding: 40px;
+		}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		.cv-header {
+			margin-bottom: 40px;
+		}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/naits/e-portfolio/src/Controller/CvController.php</code></li>
-        <li>Your template at <code>C:/Users/naits/e-portfolio/templates/cv/index.html.twig</code></li>
-    </ul>
-</div>
+		.cv-name {
+			font-size: 2.5em;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: #4a4a4a;
+			line-height: 1.2;
+		}
+
+		.cv-content {
+			display: flex;
+			gap: 40px;
+		}
+
+		.cv-left-col {
+			flex: 1;
+			max-width: 35%;
+		}
+
+		.cv-right-col {
+			flex: 2;
+		}
+
+		.section-title {
+			background-color: #f4f4f4;
+			padding: 10px 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 20px;
+			color: #555;
+			font-size: 0.9em;
+		}
+
+		.contact-info {
+			margin-bottom: 30px;
+			font-size: 0.9em;
+			line-height: 1.6;
+		}
+
+		.contact-item {
+			margin-bottom: 10px;
+		}
+
+		.contact-label {
+			display: block;
+			color: #777;
+		}
+
+		.skills-list,
+		.interests-list {
+			list-style: none;
+			padding: 0;
+			margin-bottom: 30px;
+		}
+
+		.skills-list li,
+		.interests-list li {
+			margin-bottom: 8px;
+			position: relative;
+			padding-left: 15px;
+		}
+
+		.skills-list li::before,
+		.interests-list li::before {
+			content: "•";
+			position: absolute;
+			left: 0;
+			color: #555;
+		}
+
+		.experience-item,
+		.education-item {
+			margin-bottom: 25px;
+		}
+
+		.date-range {
+			font-weight: bold;
+			color: #444;
+			margin-bottom: 5px;
+		}
+
+		.job-title,
+		.degree {
+			font-style: italic;
+			color: #666;
+		}
+
+		.profile-text {
+			line-height: 1.6;
+			color: #555;
+			margin-bottom: 30px;
+			text-align: justify;
+		}
+
+		.print-btn-container {
+			text-align: right;
+			margin-bottom: 20px;
+		}
+
+		.progress {
+			display: flex;
+			height: 1rem;
+			overflow: hidden;
+			font-size: 0.75rem;
+			background-color: #e9ecef;
+			border-radius: 0.375rem;
+			margin-bottom: 1rem;
+		}
+
+		.progress-bar {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			overflow: hidden;
+			color: #fff;
+			text-align: center;
+			white-space: nowrap;
+			background-color: #44603dff;
+			transition: width 0.6s ease;
+		}
+		.print-btn {
+			background-color: #4a4a4a;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			font-size: 1em;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+		.print-btn:hover {
+			background-color: #333;
+		}
+
+		@media print {
+			.print-btn-container {
+				display: none;
+			}
+			.cv-container {
+				box-shadow: none;
+				margin: 0;
+				padding: 20px;
+				width: 100%;
+				max-width: 100%;
+			}
+			body {
+				background-color: red;
+			}
+		}
+	</style>
+
+	<div class="cv-container">
+		<div class="print-btn-container">
+			<button onclick="window.print()" class="print-btn">Imprimer le CV</button>
+		</div>
+		<header class="cv-header">
+			<div class="cv-name">
+				Ayman<br>
+				Nait Sidi Moh
+			</div>
+		</header>
+
+		<div
+			class="cv-content">
+			<!-- Left Column -->
+			<div class="cv-left-col">
+				<div class="section-title">Contact</div>
+				<div class="contact-info">
+					<div class="contact-item">
+						Adresse postale :<br>
+						Riorges, 42153
+					</div>
+					<div class="contact-item">
+						Adresse mail:<br>
+						naitsidimohayman@gmail.com
+					</div>
+					<div class="contact-item">
+						Téléphone : +33 7 53 04 63 25
+					</div>
+				</div>
+
+				<div class="section-title">Compétences</div>
+				<div class="skills-container">
+					<div class="progress" role="progressbar" aria-label="Python" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar" style="width: 65%">Python</div>
+					</div>
+					<div class="progress" role="progressbar" aria-label="C" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar" style="width: 40%">C</div>
+					</div>
+					<div class="progress" role="progressbar" aria-label="Suite office" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar" style="width: 95%">Suite office</div>
+					</div>
+					<div class="progress" role="progressbar" aria-label="Anglais" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar" style="width: 70%">Anglais</div>
+					</div>
+					<div class="progress" role="progressbar" aria-label="Espagnol" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar" style="width: 40%">Espagnol</div>
+					</div>
+				</div>
+				<div style="margin-top: 15px; text-align: center;">
+					<a href="{{ path('app_competence') }}" style="color: #44603dff; text-decoration: none; font-size: 0.9em; font-weight: bold;">
+						Voir mon E-Portfolio de Compétences &rarr;
+					</a>
+				</div>
+
+				<div class="section-title">Expérience Professionnelles</div>
+				<div class="experience-list">
+					<div class="experience-item">
+						<div class="date-range">Juillet/Août 2023: Burger King</div>
+						<div class="job-title">Employé polyvalent</div>
+					</div>
+					<div class="experience-item">
+						<div class="date-range">Juillet/Août 2025: Burger King</div>
+						<div class="job-title">Employé polyvalent</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- colone de droite -->
+			<div class="cv-right-col">
+				<div class="section-title">Profil</div>
+				<div class="profile-text">
+					En tant qu'étudiant de 18 ans, je suis reconnu pour ma rigueur, ma motivation et ma discipline exemplaires. Je m'investis pleinement dans chaque tâche qui se présente à moi et j'accorde une attention méticuleuse aux détails. Mon ambition et ma détermination sont les clés de mon succès académique et personnel. J'adopte une approche méthodique qui me permet de surmonter les obstacles et d'atteindre mes objectifs. Mes atouts font de moi un étudiant remarquable.
+				</div>
+
+				<div class="section-title">Formation</div>
+				<div class="education-list">
+					<div class="education-item">
+						<div class="date-range">2022-2025 : Lycée Carnot Roanne</div>
+						<div class="degree">- Obtention diplôme du baccalauréat</div>
+					</div>
+					<div class="education-item">
+						<div class="date-range">2025-2027 : Université Jean Monnet</div>
+						<div class="degree">- BUT réseau et télécommunication</div>
+					</div>
+				</div>
+
+				<div class="section-title">Intérêts</div>
+				<ul class="interests-list">
+					<li>Sports</li>
+					<li>Voyages</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 {% endblock %}
