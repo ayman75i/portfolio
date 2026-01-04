@@ -1,34 +1,348 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompetenceController!
+{% block title %}Mes Compétences - Portfolio Ayman
 {% endblock %}
 
 {% block body %}
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+		.competences-container {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 20px;
 		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
+
+		.page-title {
+			text-align: center;
+			font-size: 2.5em;
+			margin-bottom: 40px;
+			color: #f5f5f5;
+		}
+
+		.competency-section {
+			background: #232222ff;
+			border-radius: 10px;
+			padding: 25px;
+			margin-bottom: 30px;
+			border: 2px solid #788079ff;
+		}
+
+		.competency-section h2 {
+			color: #788079ff;
+			margin-bottom: 20px;
+			font-size: 1.8em;
+		}
+
+		.ac-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 15px;
+		}
+
+		.ac-item {
+			background: #2a2929;
+			padding: 15px;
+			border-radius: 8px;
+			border-left: 4px solid #788079ff;
+		}
+
+		.ac-code {
+			font-weight: bold;
+			color: #788079ff;
+			margin-bottom: 8px;
+		}
+
+
+		.ac-rating {
+			margin-bottom: 12px;
+			font-size: 1.1em;
+		}
+
+		.stars {
+			color: #ffd700;
+		}
+
+		.stars .empty {
+			color: #4a4a4a;
+		}
+
+		{
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.ac-link {
+			padding: 8px 15px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-size: 0.9em;
+			transition: 0.3s;
+		}
+
+		.preuve {
+			background: #4a7c59;
+			color: white;
+		}
+
+		.preuve:hover {
+			background: #5d9970;
+		}
+
+		.analyse {
+			background: #6b5b95;
+			color: white;
+		}
+
+		.analyse:hover {
+			background: #8b7ab8;
+		}
+
+		@media(max-width: 768px) {
+			.page-title {
+				font-size: 2em;
+			}
+
+			.ac-list {
+				grid-template-columns: 1fr;
+			}
 		}
 	</style>
 
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅</h1>
+	<div class="competences-container">
+		<h1 class="page-title">Mes Compétences</h1>
 
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>C:/Users/naits/e-portfolio/src/Controller/CompetenceController.php</code>
-			</li>
-			<li>Your template at
-				<code>C:/Users/naits/e-portfolio/templates/competence/index.html.twig</code>
-			</li>
-		</ul>
+		<!-- RT1 -->
+		<div class="competency-section">
+			<h2>🌐 RT1 - Administrer les réseaux et l'Internet</h2>
+			<div class="ac-list">
+				<div class="ac-item">
+					<div class="ac-code">AC11.01</div>
+					<div class="ac-desc">L'information, des communications et de l'Internet</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC11.01_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC11.01_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC11.02</div>
+					<div class="ac-desc">Configurer les fonctions de base du réseau local</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC11.02_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC11.02_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC11.03</div>
+					<div class="ac-desc">Configuration et l'administration des réseaux et services fournis</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC11.03_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC11.03_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC11.04</div>
+					<div class="ac-desc">Savoir identifier les dysfonctionnements du réseau local</div>
+					<div class="ac-rating">
+						Note: 3/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC11.04_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC11.04_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC11.05</div>
+					<div class="ac-desc">Installer un poste client, expliquer la procédure mise en place</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC11.05_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC11.05_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC11.06</div>
+					<div class="ac-desc">Mesurer et analyser les signaux</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC11.06_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC11.06_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- RT2 -->
+		<div class="competency-section">
+			<h2>🔌 RT2 - Connecter les entreprises et les usagers</h2>
+			<div class="ac-list">
+				<div class="ac-item">
+					<div class="ac-code">AC12.01</div>
+					<div class="ac-desc">Mesurer et analyser les signaux leur fonctionnement</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC12.01_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC12.01_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC12.02</div>
+					<div class="ac-desc">Déployer des supports de transmission</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC12.02_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC12.02_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC12.03</div>
+					<div class="ac-desc">Connecter les systèmes de ToIP</div>
+					<div class="ac-rating">
+						Note: 3/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC12.03_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC12.03_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC12.04</div>
+					<div class="ac-desc">Interlocuteur</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC12.04_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC12.04_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC12.05</div>
+					<div class="ac-desc">Utiliser un système informatique et ses outils</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC12.05_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC12.05_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC12.06</div>
+					<div class="ac-desc">Lire, exécuter, corriger et modifier un programme</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC12.06_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC12.06_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- RT3 -->
+		<div class="competency-section">
+			<h2>💻 RT3 - Créer des outils et des applications informatiques pour les R&T</h2>
+			<div class="ac-list">
+				<div class="ac-item">
+					<div class="ac-code">AC13.01</div>
+					<div class="ac-desc">Utiliser un système informatique et ses outils</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC13.01_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC13.01_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC13.02</div>
+					<div class="ac-desc">Lire, exécuter, corriger et modifier un programme</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC13.02_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC13.02_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC13.03</div>
+					<div class="ac-desc">Traduire un algorithme dans un langage et pour un environnement donné</div>
+					<div class="ac-rating">
+						Note: 3/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC13.03_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC13.03_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC13.04</div>
+					<div class="ac-desc">Connaître l'architecture et les technologies d'un site Web</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC13.04_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC13.04_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC13.05</div>
+					<div class="ac-desc">Faire un choix de développement</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC13.05_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC13.05_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+
+				<div class="ac-item">
+					<div class="ac-code">AC13.06</div>
+					<div class="ac-desc">S'intégrer dans un environnement propice au développement et au travail collaboratif</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+					<div class="ac-links">
+						<a href="{{ asset('documents/competences/AC13.06_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
+						<a href="{{ asset('documents/competences/AC13.06_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 {% endblock %}
