@@ -26,10 +26,48 @@
 			border: 2px solid #788079ff;
 		}
 
-		.competency-section h2 {
+		.section-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.section-header h2 {
 			color: #788079ff;
-			margin-bottom: 20px;
+			margin: 0;
 			font-size: 1.8em;
+		}
+
+		.arrow {
+			font-size: 1.5em;
+			color: #788079ff;
+			transition: transform 0.3s;
+		}
+
+		.arrow.open {
+			transform: rotate(180deg);
+		}
+
+		.section-content {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+		}
+
+		.section-content.open {
+			max-height: 2000px;
+			margin-top: 20px;
+		}
+
+		.section-description {
+			background: #2a2929;
+			padding: 15px;
+			border-radius: 8px;
+			margin-bottom: 15px;
+			color: #f5f5f5;
+			line-height: 1.6;
 		}
 
 		.ac-list {
@@ -88,15 +126,6 @@
 			background: #5d9970;
 		}
 
-		.analyse {
-			background: #6b5b95;
-			color: white;
-		}
-
-		.analyse:hover {
-			background: #8b7ab8;
-		}
-
 		@media(max-width: 768px) {
 			.page-title {
 				font-size: 2em;
@@ -106,243 +135,158 @@
 				grid-template-columns: 1fr;
 			}
 		}
+
+
+		.ac-image {
+			width: 100%;
+			max-width: 200px;
+			height: 180px;
+			object-fit: contain;
+			border-radius: 10px;
+			display: block;
+			margin: 0 auto 15px;
+			background-color: #1a1a1a;
+			padding: 10px;
+		}
 	</style>
 
 	<div class="competences-container">
 		<h1 class="page-title">Mes Compétences</h1>
 
-		<!-- RT1 -->
+		<!-- 1 -->
 		<div class="competency-section">
-			<h2>🌐 RT1 - Administrer les réseaux et l'Internet</h2>
-			<div class="ac-list">
-				<div class="ac-item">
-					<div class="ac-code">AC11.01</div>
-					<div class="ac-desc">L'information, des communications et de l'Internet</div>
-					<div class="ac-rating">
-						Note: 5/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC11.01_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC11.01_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC11.02</div>
-					<div class="ac-desc">Configurer les fonctions de base du réseau local</div>
-					<div class="ac-rating">
-						Note: 4/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC11.02_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC11.02_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC11.03</div>
-					<div class="ac-desc">Configuration et l'administration des réseaux et services fournis</div>
-					<div class="ac-rating">
-						Note: 4/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC11.03_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC11.03_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC11.04</div>
-					<div class="ac-desc">Savoir identifier les dysfonctionnements du réseau local</div>
-					<div class="ac-rating">
-						Note: 3/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC11.04_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC11.04_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC11.05</div>
-					<div class="ac-desc">Installer un poste client, expliquer la procédure mise en place</div>
-					<div class="ac-rating">
-						Note: 5/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC11.05_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC11.05_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC11.06</div>
-					<div class="ac-desc">Mesurer et analyser les signaux</div>
-					<div class="ac-rating">
-						Note: 4/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC11.06_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC11.06_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
+			<div class="section-header" onclick="toggleSection(this)">
+				<h2>🌐 1 - Administrer les réseaux et l'Internet</h2>
+				<span class="arrow">▼</span>
+			</div>
+			<div class="section-content">
+				<div class="section-description">
+					J'ai travaillé sur de l'électronique avec Arduino et ESP32 et le Arduino Uno, ce qui m'a permis de comprendre les bases de l'électricité et le lien entre matériel et logiciel. J'ai appris à programmer en C sur microcontrôleur et à diagnostiquer des problèmes sur des montages. J'ai compris le fonctionnement des réseaux et je sais utiliser Wireshark : modèles OSI/TCP-IP, TCP vs UDP, encapsulation et rôle des protocoles. J'ai configuré des réseaux LAN avec Cisco Packet Tracer (IP, ping, masque de sous-réseau, vlans, sécurité du réseau, SSH , Banniere , Filtrage d'adresse MAC). J'ai renforcé mes bases en systèmes d'exploitation, surtout Linux, et mis en place des environnements client/serveur en machines virtuelles. Aujourd'hui, je suis plus autonome techniquement et je comprends ce que je fais, du matériel jusqu'au réseau.
 				</div>
 			</div>
-		</div>
-
-		<!-- RT2 -->
-		<div class="competency-section">
-			<h2>🔌 RT2 - Connecter les entreprises et les usagers</h2>
 			<div class="ac-list">
 				<div class="ac-item">
-					<div class="ac-code">AC12.01</div>
-					<div class="ac-desc">Mesurer et analyser les signaux leur fonctionnement</div>
+					<img src="{{ asset('image/4.jpg') }}" class="ac-image" alt="AC11.01">
+					<div class="ac-code">AC11.01</div>
+					<div class="ac-desc">Maitriser les lois fondamentales de l'électricité</div>
 					<div class="ac-rating">
-						Note: 4/5
+						Note: 5/5
 					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC12.01_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC12.01_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
+
 				</div>
 
 				<div class="ac-item">
+					<img src="{{ asset('image/5.png') }}" class="ac-image" alt="AC11.02">
+					<div class="ac-code">AC11.02</div>
+					<div class="ac-desc">Architecture et fondements des systèmes numériques</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+
+				</div>
+
+				<div class="ac-item">
+					<img src="{{ asset('image/6.png') }}" class="ac-image" alt="AC11.03">
+					<div class="ac-code">AC11.03</div>
+					<div class="ac-desc">onfigurer les fonctions de base du réseau local</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+		<!-- 2 -->
+		<div class="competency-section">
+			<div class="section-header" onclick="toggleSection(this)">
+				<h2>🔌 2 - Connecter les entreprises et les usagers</h2>
+				<span class="arrow">▼</span>
+			</div>
+			<div class="section-content">
+				<div class="section-description">
+					J'ai appris à mesurer et analyser des signaux avec des générateurs, un multimètre et un oscilloscope, et à voir concrètement l'impact des composants électroniques sur un signal. J'ai compris l'importance de la rigueur dans les mesures : branchements, réglages et vérifications sont essentiels pour éviter les erreurs. J'ai découvert la modélisation des systèmes de transmission avec Proteus, ce qui m'a permis de mieux comprendre l'amplitude, le déphasage et le comportement des signaux.En fibre optique, je suis passé de la théorie à la pratique : préparation des fibres, soudure, contrôle et interprétation des mesures. Grâce à la pratique, je suis maintenant capable de déployer, tester et valider un lien de transmission fiable via le Aircheck G2 et le Fluke Cable IQ.
+				</div>
+			</div>
+			<div class="ac-list">
+				<div class="ac-item">
+					<img src="{{ asset('image/9.webp') }}" class="ac-image" alt="AC12.01">
+					<div class="ac-code">AC12.01</div>
+					<div class="ac-desc">Mesurer et analyser les signaux</div>
+					<div class="ac-rating">
+						Note: 5/5
+					</div>
+
+				</div>
+
+				<div class="ac-item">
+					<img src="{{ asset('image/7.webp') }}" class="ac-image" alt="AC12.04">
 					<div class="ac-code">AC12.02</div>
+					<div class="ac-desc">Caractériser des systèmes de transmissions</div>
+					<div class="ac-rating">
+						Note: 4/5
+					</div>
+
+				</div>
+
+				<div class="ac-item">
+					<img src="{{ asset('image/8.png') }}" class="ac-image" alt="AC12.05">
+					<div class="ac-code">AC12.03</div>
 					<div class="ac-desc">Déployer des supports de transmission</div>
 					<div class="ac-rating">
 						Note: 5/5
 					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC12.02_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC12.02_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
+
 				</div>
 
-				<div class="ac-item">
-					<div class="ac-code">AC12.03</div>
-					<div class="ac-desc">Connecter les systèmes de ToIP</div>
-					<div class="ac-rating">
-						Note: 3/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC12.03_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC12.03_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
 
-				<div class="ac-item">
-					<div class="ac-code">AC12.04</div>
-					<div class="ac-desc">Interlocuteur</div>
-					<div class="ac-rating">
-						Note: 4/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC12.04_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC12.04_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC12.05</div>
-					<div class="ac-desc">Utiliser un système informatique et ses outils</div>
-					<div class="ac-rating">
-						Note: 5/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC12.05_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC12.05_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC12.06</div>
-					<div class="ac-desc">Lire, exécuter, corriger et modifier un programme</div>
-					<div class="ac-rating">
-						Note: 4/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC12.06_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC12.06_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
 			</div>
 		</div>
 
-		<!-- RT3 -->
+		<!-- 3 -->
 		<div class="competency-section">
-			<h2>💻 RT3 - Créer des outils et des applications informatiques pour les R&T</h2>
+			<div class="section-header" onclick="toggleSection(this)">
+				<h2>💻 3 - Créer des outils et des applications informatiques pour les R&T</h2>
+				<span class="arrow">▼</span>
+			</div>
+			<div class="section-content">
+				<div class="section-description">
+					Avant, je connaissais un peu Python, mais pas le C. Maintenant, je sais lire, comprendre, exécuter et modifier des programmes en C et Python. J'ai appris à structurer mon code, corriger les erreurs et utiliser le débogage efficacement. J'ai découvert le développement web avec mon e-portfolio : front-end (HTML, CSS, Bootstrap) et back-end (Symfony). J'ai travaillé étape par étape à partir d'un cahier des charges et surmonté les difficultés en cherchant des solutions. Aujourd'hui, je sais programmer et créer un site web complet en comprenant le rôle de chaque technologie.
+				</div>
+			</div>
 			<div class="ac-list">
 				<div class="ac-item">
-					<div class="ac-code">AC13.01</div>
-					<div class="ac-desc">Utiliser un système informatique et ses outils</div>
-					<div class="ac-rating">
-						Note: 5/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC13.01_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC13.01_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
+					<img src="{{ asset('image/10.webp') }}" class="ac-image" alt="AC13.01">
 					<div class="ac-code">AC13.02</div>
 					<div class="ac-desc">Lire, exécuter, corriger et modifier un programme</div>
 					<div class="ac-rating">
-						Note: 4/5
+						Note: 5/5
 					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC13.02_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC13.02_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
+
 				</div>
 
 				<div class="ac-item">
+					<img src="{{ asset('image/11.webp') }}" class="ac-image" alt="AC13.03">
 					<div class="ac-code">AC13.03</div>
 					<div class="ac-desc">Traduire un algorithme dans un langage et pour un environnement donné</div>
 					<div class="ac-rating">
 						Note: 3/5
 					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC13.03_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC13.03_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
+
 				</div>
 
-				<div class="ac-item">
-					<div class="ac-code">AC13.04</div>
-					<div class="ac-desc">Connaître l'architecture et les technologies d'un site Web</div>
-					<div class="ac-rating">
-						Note: 5/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC13.04_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC13.04_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
 
-				<div class="ac-item">
-					<div class="ac-code">AC13.05</div>
-					<div class="ac-desc">Faire un choix de développement</div>
-					<div class="ac-rating">
-						Note: 4/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC13.05_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC13.05_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
-
-				<div class="ac-item">
-					<div class="ac-code">AC13.06</div>
-					<div class="ac-desc">S'intégrer dans un environnement propice au développement et au travail collaboratif</div>
-					<div class="ac-rating">
-						Note: 5/5
-					</div>
-					<div class="ac-links">
-						<a href="{{ asset('documents/competences/AC13.06_Preuve.pdf') }}" class="ac-link preuve" target="_blank">📋 Preuve</a>
-						<a href="{{ asset('documents/competences/AC13.06_Analyse.pdf') }}" class="ac-link analyse" target="_blank">🔍 Analyse</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
+
+	<script>
+		function toggleSection(header) {
+const content = header.nextElementSibling;
+const arrow = header.querySelector('.arrow');
+content.classList.toggle('open');
+arrow.classList.toggle('open');
+}
+	</script>
 {% endblock %}
