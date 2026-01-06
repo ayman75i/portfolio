@@ -1,121 +1,122 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome - E-Portfolio
-{% endblock %}
+{% block title %}Accueil - E-Portfolio{% endblock %}
 
 {% block body %}
-	<section class="home-section">
-		<h1 z>Welcome to my E-portfolio</h1>
+    <section class="section-accueil">
+        <h1>Welcome to my E-portfolio</h1>
 
-		<div class="presentation-container">
-			<div class="presentation-left slide-left">
-				<div class="avatar-container">
-					<img src="image/2.jpg" class="avatar">
-				</div>
-			</div>
+        <div class="conteneur-presentation">
+            <div class="presentation-gauche glissement-gauche">
+                <div class="conteneur-avatar">
+                    <img src="image/2.jpg" class="avatar" alt="Photo de profil">
+                </div>
+            </div>
 
-			<div class="presentation-right slide-right">
-				<div class="info-card card">
-					<h2>Nait Sidi Moh Ayman</h2>
-					<p class="subtitle">Group B2 – BUT Networks and Telecommunications Student</p>
-					<p class="email">📧 naitsidimohayman@gmail.com</p>
+            <div class="presentation-droite glissement-droite">
+                <div class="carte-info carte">
+                    <h2>Nait Sidi Moh Ayman</h2>
+                    <p class="sous-titre">Group B2 – BUT Networks and Telecommunications Student</p>
+                    <p class="email">📧 naitsidimohayman@gmail.com</p>
 
-					<div class="description">
-						<p>
+                    <div class="description">
+                        <p>
 							Passionate about networks and telecommunications,
-							                    I'am developing my skills in system administration,
-							                    IT security and programming.
-						</p>
-					</div>
+							I'am developing my skills in system administration,
+							IT security and programming.
+                        </p>
+                    </div>
 
-					<div class="btn-container">
-						<a href="{{ path('app_savoirplus') }}" class="btn btn-arrow">
-							<p>
-								<span style="border: 1px solid red;">More About Me</span>
-							</p>
-						</span>
-					</p>
-				</a>
-			</div>
-		</div>
-	</div>
-</div></section><style>
-.home-section {
-	min-height: calc(100vh - 80px);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+                    <div class="conteneur-bouton">
+                        <a href="{{ path('app_savoirplus') }}" class="bouton bouton-fleche">
+                            <span>More about me</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<style>
+.section-accueil {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.presentation-container {
-	display: grid;
-	grid-template-columns: 1fr 1.5fr;
-	gap: 50px;
-	align-items: center;
-	margin-top: 50px;
+.conteneur-presentation {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: center;
+    margin-top: 50px;
 }
 
-.avatar-container {
-	width: 100%;
-	max-width: 300px;
-	margin: 0 auto;
-	border: 5px solid var(--bordeau);
-	border-radius: 20px;
-	overflow: hidden;
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-	transition: transform 0.3s ease;
+.conteneur-avatar {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border: 5px solid var(--bordeau);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 
-.avatar-container:hover {
-	transform: scale(1.05) rotate(2deg);
+.conteneur-avatar:hover {
+    transform: scale(1.05) rotate(2deg);
 }
 
 .avatar {
-	width: 100%;
-	height: auto;
-	display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.info-card {
-	padding: 40px;
+.carte-info {
+    padding: 40px;
 }
 
-.info-card h2 {
-	color: var(--blanc-casse);
-	margin-bottom: 15px;
-	text-align: left;
-	font-size: 2.5rem;
+.carte-info h2 {
+    color: var(--blanc-casse);
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 2.5rem;
 }
 
-.subtitle {
-	font-size: 1.2rem;
-	color: #a0a0a0;
-	margin-bottom: 10px;
+.sous-titre {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    margin-bottom: 10px;
 }
 
 .email {
-	font-size: 1.1rem;
-	margin-bottom: 30px;
-	color: var;
-	font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: var(--bordeau); /* Ajout d'une variable par défaut si nécessaire */
+    font-weight: 600;
 }
 
 .description {
-	margin-bottom: 30px;
-	font-size: 1.1rem;
-	line-height: 1.8;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
-.btn-container {
-	text-align: left;
+.conteneur-bouton {
+    text-align: left;
 }
 
+/* mobiles */
 @media(max-width: 768px) {
-	.presentation-container {
-		grid-template-columns: 1fr;
-	}
+    .conteneur-presentation {
+        grid-template-columns: 1fr;
+    }
 
-	.btn-container {
-		text-align: center;
-	}
-}</style>{% endblock %}
+    .conteneur-bouton {
+        text-align: center;
+    }
+}
+</style>
+{% endblock %}
